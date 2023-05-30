@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desktop, Tablet, Mobile Preview</title>
+  <meta name="robots" content="noindex, nofollow">
+
+<base href="https://cdn.jsdelivr.net/gh/linuxguist/devices_preview@main/">
+
+    <link rel="stylesheet" href="demo_vi.css">
+
+<style type="text/css">
+
+.forty_four_px {
+  height: 44px !important;  
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+}
+
+.icon {
+  width:  44px !important;
+  height: 44px !important;  
+}
+
+.preview-desktop {
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin-top: 40px !important;
+}
+
+.preview-tablet {
+  margin-top: 40px !important;
+}
+
+.preview-mobile {
+  margin-top: 40px !important;
+}
+
+.preview-devices {
+  margin-left: 1%;
+}
+
+.urlform {
+  height: 44px !important;
+  margin-top: 8px;
+}
+
+</style>
+
+  </head>
+
+<body>
+
+  <header id="header" class="forty_four_px">
+
+<center>
+<form method="post" target="preview-frame">
+<input id="txtUrl" style="width:82%;" placeholder="Type the URL here...." name="url" type="text" class="urlform" autofocus  />
+<input style="width:14%;" type="submit" value="Go" onclick="setBrowserFrameSource(); return false;" class="urlform" />
+</form>
+</center>
+
+    <div class="preview-devices forty_four_px">
+      <ul>
+        <li class="preview-test preview-devices-active" id="preview-test-desktop" title="Desktop preview of this webpage"><a href=""><img class="icon icon-preview" src="Desktop_Icon.png"></img></a></li>
+        <li class="preview-test" id="preview-test-tablet" title="Tablet preview of this webpage"><a href=""><img class="icon icon-tablet" src="Tablet_Icon.png"></img></a></li>
+        <li class="preview-test" id="preview-test-mobile" title="Mobile preview of this webpage"><a href=""><img class="icon icon-smartphone" src="Mobile_Icon_ii.png"></img></a></li>
+      </ul>
+    </div>
+    
+    <div class="navigate forty_four_px">
+      <a href="https://example.com" target="_top" title="Hide the demo bar"><img class="icon icon-external-link" src="icon-external-link.png"/></img></a>
+    </div>
+
+  </header>
+
+  <div id="preview">
+    <iframe id="preview-frame" class="preview-desktop" src="https://google.com" frameborder="0"></iframe>
+  </div>
+
+      <script src="demo.js"></script>
+
+<script type="text/javascript">
+    function setBrowserFrameSource(){
+        var browserFrame = document.getElementById("preview-frame");
+        browserFrame.src= document.getElementById("txtUrl").value;
+    }
+</script>      
+
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function() {
+  // Get the current URL, removing any fragment
+  var documentUrl = document.location.href.replace(/#.*$/, '')
+
+  // Iterate through all links
+  var linkEls = document.getElementsByTagName('A')
+  for (var linkIndex = 0; linkIndex < linkEls.length; linkIndex++) {
+    var linkEl = linkEls[linkIndex]
+
+    // Ignore links that don't begin with #
+    if (!linkEl.getAttribute('href').match(/^#/)) {
+      continue;
+    }
+
+    // Convert to an absolute URL
+    linkEl.setAttribute('href', documentUrl + linkEl.getAttribute('href'))
+  }
+})    
+</script>
+
+</body>
+
+</html>
